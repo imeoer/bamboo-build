@@ -1,2 +1,2 @@
 # bamboo-build
-bamboo build dockerfile
+bamboo auto build dockerfile

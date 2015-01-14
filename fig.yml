@@ -1,0 +1,10 @@
+api:
+    build: api
+mongodb:
+    build: mongodb
+nginx:
+    build: nginx
+redis:
+    build: redis
+web:
+    build: web
