@@ -1,4 +1,4 @@
-FROM ubuntu:14.04
+FROM ubuntu
 MAINTAINER "imeoer" <imeoer@gmail.com>
 
 # Install Golang
