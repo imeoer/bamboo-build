@@ -1,3 +1,11 @@
+# sudo apt-get update -y
+# sudo apt-get install git docker.io python-pip -y
+# sudo pip install -U fig
+
+# git clone https://github.com/imeoer/bamboo-build.git
+# cd bamboo-build
+# sudo fig up
+
 api:
     build: api
 mongodb:
