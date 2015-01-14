@@ -13,6 +13,6 @@ mongodb:
 nginx:
     build: nginx
 redis:
-    build: redis
+    image: redis
 web:
-    build: web
+    image: node
