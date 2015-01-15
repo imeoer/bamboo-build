@@ -2,8 +2,7 @@ FROM dockerfile/ubuntu
 MAINTAINER "imeoer" <imeoer@gmail.com>
 
 # Install Nodejs
+RUN echo "deb http://archive.ubuntu.com/ubuntu precise main universe" > /etc/apt/sources.list
+RUN add-apt-repository ppa:chris-lea/node.js -y
 RUN apt-get update -y
-RUN apt-get install python python-dev python-pip python-virtualenv -y
-RUN apt-get install openssl libssl-dev pkg-config -y
-RUN git clone https://github.com/joyent/node.git
-RUN cd node && ./configure && make && make install
+RUN apt-get install nodejs-legacy npm -y
