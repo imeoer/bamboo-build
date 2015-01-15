@@ -8,16 +8,14 @@
 
 api:
     build: api
-    command: bamboo-api
+    command: $GOPATH/bin/bamboo-api
     ports:
         - "9090:9090"
     links:
         - mongodb
-        - nginx
-        - redis
 mongodb:
     build: mongodb
-    command: bamboo-api
+    command: mongod
     ports:
         - "27017:27017"
     volumes:
