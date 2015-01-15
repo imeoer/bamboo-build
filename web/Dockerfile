@@ -2,5 +2,6 @@ FROM dockerfile/ubuntu
 MAINTAINER "imeoer" <imeoer@gmail.com>
 
 # Install Nodejs
-RUN curl https://raw.githubusercontent.com/creationix/nvm/v0.22.2/install.sh | bash
-RUN /bin/bash -c nvm install stable && nvm use stable
+RUN git clone https://github.com/creationix/nvm.git /.nvm
+RUN echo ". /.nvm/nvm.sh" >> /etc/bash.bashrc
+RUN /bin/bash -c . /.nvm/nvm.sh && nvm install stable && nvm use stable
