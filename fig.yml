@@ -15,4 +15,4 @@ nginx:
 redis:
     image: redis
 web:
-    image: node
+    build: web
