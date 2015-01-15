@@ -1,4 +1,4 @@
-FROM ubuntu
+FROM dockerfile/ubuntu
 MAINTAINER "imeoer" <imeoer@gmail.com>
 
 # Install Nginx
