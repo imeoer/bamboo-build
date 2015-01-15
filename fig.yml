@@ -9,25 +9,19 @@
 api:
     build: api
     command: /root/go/bin/bamboo-api
-    ports:
-        - "9090:9090"
     links:
         - mongodb
+    volumes:
+        - /root:/data/public
 mongodb:
     build: mongodb
     command: /bin/sh -c "rm /data/db/mongod.lock || mongod"
-    ports:
-        - "27017:27017"
     volumes:
         - /root:/data/db
 nginx:
     build: nginx
-    ports:
-        - "80:80"
 redis:
     build: redis
-    ports:
-        - "6379:6379"
 web:
     build: web
     command: gulp --cwd /root/bamboo-web
