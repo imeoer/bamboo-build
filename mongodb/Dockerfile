@@ -7,3 +7,5 @@ RUN echo 'deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen
 RUN apt-get update -y
 RUN apt-get install mongodb-org -y
 VOLUME /data/db
+
+EXPOSE 27017
