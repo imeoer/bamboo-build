@@ -8,11 +8,32 @@
 
 api:
     build: api
+    command: bamboo-api
+    ports:
+        - "9090:9090"
+    links:
+        - mongodb
+        - nginx
+        - redis
 mongodb:
     build: mongodb
+    command: bamboo-api
+    ports:
+        - "27017:27017"
+    volumes:
+        - /root:/data/db
 nginx:
     build: nginx
+    ports:
+        - "80:80"
 redis:
     build: redis
+    ports:
+        - "6379:6379"
 web:
     build: web
+    command: gulp --cwd /root/bamboo-web
+    ports:
+        - "8000:8000"
+    links:
+        - api

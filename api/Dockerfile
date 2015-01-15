@@ -11,4 +11,4 @@ RUN curl -s https://storage.googleapis.com/golang/go1.4.linux-amd64.tar.gz | tar
 # Build Bakcend
 RUN go get -u github.com/imeoer/bamboo-api
 
-EXPOSE 80
+EXPOSE 9090
