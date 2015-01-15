@@ -8,14 +8,14 @@
 
 api:
     build: api
-    command: $GOPATH/bin/bamboo-api
+    command: /root/go/bin/bamboo-api
     ports:
         - "9090:9090"
     links:
         - mongodb
 mongodb:
     build: mongodb
-    command: mongod
+    command: /bin/sh -c "rm /data/db/mongod.lock || mongod"
     ports:
         - "27017:27017"
     volumes:
