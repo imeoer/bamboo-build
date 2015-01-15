@@ -10,12 +10,12 @@ api:
     build: api
     command: /root/go/bin/bamboo-api
     links:
-        - mongodb
+        - mongodb:mongodb
     volumes:
         - /root:/data/public
 mongodb:
     build: mongodb
-    command: /bin/sh -c "rm /data/db/mongod.lock || mongod"
+    command: /bin/sh -c "rm /data/db/mongod.lock; mongod"
     volumes:
         - /root:/data/db
 nginx:
@@ -28,4 +28,4 @@ web:
     ports:
         - "8000:8000"
     links:
-        - api
+        - api:api
