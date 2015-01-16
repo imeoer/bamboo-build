@@ -4,25 +4,8 @@
 # git clone https://github.com/imeoer/bamboo-build.git
 # cd bamboo-build
 # sudo fig build
+# sudo fig up
 
-api:
-    build: api
-    command: /root/go/bin/bamboo-api
-    links:
-        - mongodb:mongodb
-    volumes:
-        - /root:/data/public
-    ports:
-        - "9090:9090"
-mongodb:
-    build: mongodb
-    command: /bin/sh -c "rm /data/db/mongod.lock; mongod"
-    volumes:
-        - /root:/data/db
-nginx:
-    build: nginx
-redis:
-    build: redis
 web:
     build: web
     command: gulp --cwd /root/bamboo-web
@@ -30,3 +13,29 @@ web:
         - "8000:8000"
     links:
         - api:api
+api:
+    build: api
+    command: /root/bamboo-api
+    links:
+        - mongodb:mongodb
+    volumes:
+        - /root:/data/public
+        - /root/api:/root
+    ports:
+        - "9090:9090"
+nginx:
+    build: nginx
+    volumes:
+        - /root/web:/root
+redis:
+    build: redis
+mongodb:
+    build: mongodb
+    command: /bin/sh -c "rm /data/db/mongod.lock; mongod"
+    volumes:
+        - /root:/data/db
+update:
+    build: update
+    command: /root/build.sh
+    volumes:
+        - /root:/root/build
