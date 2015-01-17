@@ -8,6 +8,7 @@
 
 web:
     build: web
+    command: nginx
     volumes:
         - /root/web:/usr/share/nginx/html
     ports:
