@@ -13,16 +13,14 @@ RUN echo ". /.nvm/nvm.sh" >> /etc/bash.bashrc
 RUN curl -sL https://deb.nodesource.com/setup | sudo bash -
 RUN sudo apt-get install -y nodejs
 
-# Build Web
+# Init Web
 RUN cd /root && git clone https://github.com/inspire-0905/bamboo-web.git
 RUN npm install gulp -g
-RUN cd bamboo-web && npm install && gulp release
-
-# Build Bakcend
-RUN go get -u github.com/imeoer/bamboo-api
+RUN cd bamboo-web && npm install
 
 # Create Build Script
 RUN mkdir -p /root/build/web
 RUN mkdir -p /root/build/api
-RUN echo "cd /root/bamboo-web && git pull --rebase && go get -u github.com/imeoer/bamboo-api && mv /root/golang/bin/bamboo-api /root/build/api" > /root/build.sh
+RUN echo "cd /root/bamboo-web && git pull --rebase && gulp release && mv release/* /root/build/web && go get -u github.com/imeoer/bamboo-api && mv /root/golang/bin/bamboo-api /root/build/api" > /root/build.sh
 RUN chmod +x /root/build.sh
+RUN /root/build.sh

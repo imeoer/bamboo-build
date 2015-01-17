@@ -9,7 +9,7 @@
 web:
     build: web
     volumes:
-        - /root/web:/root
+        - /root/web:/usr/share/nginx/html
     ports:
         - "80:80"
     links:
