@@ -10,13 +10,12 @@ RUN curl -s https://storage.googleapis.com/golang/go1.4.linux-amd64.tar.gz | tar
 # Install Node.js
 RUN git clone https://github.com/creationix/nvm.git /.nvm
 RUN echo ". /.nvm/nvm.sh" >> /etc/bash.bashrc
-RUN curl -sL https://deb.nodesource.com/setup | sudo bash -
-RUN sudo apt-get install -y nodejs
-
-# Init Web
-RUN cd /root && git clone https://github.com/inspire-0905/bamboo-web.git
+RUN curl -sL https://deb.nodesource.com/setup | bash -
+RUN apt-get install -y nodejs
 RUN npm install gulp -g
-RUN cd bamboo-web && npm install
+
+# Init web
+RUN cd /root && git clone https://github.com/inspire-0905/bamboo-web.git
 
 # Create Build Script
 ADD build.sh /root/
