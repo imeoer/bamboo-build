@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # clean dir
-rm /root/build -R *
+# rm /root/build -R *
 mkdir -p /root/build/web
 mkdir -p /root/build/api
 

@@ -5,5 +5,6 @@ MAINTAINER "imeoer" <imeoer@gmail.com>
 RUN apt-get update -y
 RUN apt-get install nginx -y
 RUN echo "\ndaemon off;" >> /etc/nginx/nginx.conf
+ADD default /etc/nginx/sites-available
 
 EXPOSE 80
