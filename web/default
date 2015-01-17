@@ -1,7 +1,7 @@
 server {
     listen 80 default_server;
     listen [::]:80 default_server ipv6only=on;
-    root /root/build/web;
+    root /root/web;
     index index.html index.htm;
     server_name localhost;
     location / {

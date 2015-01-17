@@ -10,22 +10,19 @@ web:
     build: web
     command: nginx
     volumes:
-        - /root/build/web
-    volumes_from:
-        - update
+        - /root:/root
     ports:
         - "80:80"
     links:
         - api:api
 api:
     build: api
-    command: /root/build/api/bamboo-api
+    command: /root/api/bamboo-api
     links:
         - mongodb:mongodb
     volumes:
         - /data/public
-    volumes_from:
-        - update
+        - /root:/root
     ports:
         - "9090:9090"
 redis:
@@ -39,4 +36,4 @@ update:
     build: update
     command: /root/build.sh
     volumes:
-        - /root/build
+        - /root:/root/build
