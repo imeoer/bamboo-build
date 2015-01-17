@@ -19,8 +19,6 @@ RUN npm install gulp -g
 RUN cd bamboo-web && npm install
 
 # Create Build Script
-RUN mkdir -p /root/build/web
-RUN mkdir -p /root/build/api
-RUN echo "cd /root/bamboo-web && git pull --rebase && gulp release && mv release/* /root/build/web && go get -u github.com/imeoer/bamboo-api && mv /root/golang/bin/bamboo-api /root/build/api" > /root/build.sh
+ADD build.sh /root/
 RUN chmod +x /root/build.sh
 RUN /root/build.sh
