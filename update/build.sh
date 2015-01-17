@@ -6,7 +6,7 @@ mkdir -p /root/build/web
 mkdir -p /root/build/api
 
 # update web
-cd bamboo-web
+cd /root/bamboo-web
 git pull --rebase
 npm install
 gulp release

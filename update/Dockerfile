@@ -15,7 +15,8 @@ RUN apt-get install -y nodejs
 RUN npm install gulp -g
 
 # Init web
-RUN cd /root && git clone https://github.com/inspire-0905/bamboo-web.git
+VOLUME /root
+RUN git clone https://github.com/inspire-0905/bamboo-web.git /root
 
 # Create Build Script
 ADD build.sh /root/
