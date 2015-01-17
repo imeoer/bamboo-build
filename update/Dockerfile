@@ -14,10 +14,6 @@ RUN curl -sL https://deb.nodesource.com/setup | bash -
 RUN apt-get install -y nodejs
 RUN npm install gulp -g
 
-# Init web
-VOLUME /root
-RUN git clone https://github.com/inspire-0905/bamboo-web.git /root
-
 # Create Build Script
 ADD build.sh /root/
 RUN chmod +x /root/build.sh
