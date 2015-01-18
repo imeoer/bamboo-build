@@ -22,6 +22,7 @@ api:
         - mongodb:mongodb
     volumes_from:
         - update
+    volumes:
         - /data/public
     ports:
         - "9090:9090"

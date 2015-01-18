@@ -6,6 +6,7 @@ mkdir -p /root/build/web
 mkdir -p /root/build/api
 
 # update web
+chown www-data:www-data /root/ -R *
 cd /root
 git clone https://github.com/inspire-0905/bamboo-web.git
 cd bamboo-web
