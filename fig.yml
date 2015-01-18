@@ -17,7 +17,7 @@ web:
         - api:api
 api:
     build: api
-    command: /root/build/api/bamboo-api
+    command: /data/build/api/bamboo-api
     links:
         - mongodb:mongodb
     volumes_from:
@@ -35,6 +35,6 @@ mongodb:
         - /data/db
 update:
     build: update
-    command: node /root/update.js
+    command: node /data/update.js
     volumes:
-        - /root/build
+        - /data

@@ -2,7 +2,7 @@ FROM dockerfile/ubuntu
 MAINTAINER "imeoer" <imeoer@gmail.com>
 
 # Install Golang
-ENV GOPATH /root/golang
+ENV GOPATH /data/golang
 ENV PATH /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/local/go/bin:
 RUN mkdir -p $GOPATH
 RUN curl -s https://storage.googleapis.com/golang/go1.4.linux-amd64.tar.gz | tar -v -C /usr/local/ -xz
@@ -15,7 +15,7 @@ RUN apt-get install -y nodejs
 RUN npm install gulp -g
 
 # Create Build Script
-ADD build.sh /root/
-ADD update.js /root/
-RUN chmod +x /root/build.sh
-RUN /root/build.sh
+ADD build.sh /data/
+ADD update.js /data/
+RUN chmod +x /data/build.sh
+RUN /data/build.sh
