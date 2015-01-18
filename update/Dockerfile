@@ -16,5 +16,6 @@ RUN npm install gulp -g
 
 # Create Build Script
 ADD build.sh /root/
+ADD update.js /root/
 RUN chmod +x /root/build.sh
 RUN /root/build.sh
