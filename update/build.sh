@@ -6,7 +6,6 @@ mkdir -p /root/build/web
 mkdir -p /root/build/api
 
 # update web
-chown www-data:www-data /root/ -R *
 cd /root
 git clone https://github.com/inspire-0905/bamboo-web.git
 cd bamboo-web
@@ -18,3 +17,4 @@ mv release/* /root/build/web
 # update api
 go get -u github.com/imeoer/bamboo-api
 mv /root/golang/bin/bamboo-api /root/build/api
+chown www-data:www-data /root/ -R *

@@ -1,8 +1,9 @@
 var http = require('http');
 var cp = require('child_process');
 
+console.log('Listening port 5555...');
+
 http.createServer(function (req, res) {
-    console.log('Listening port 5555...');
     req.on('data', function () {});
     req.on('end', function () {
         cp.exec('./build.sh', {cwd: '/root'}, function(err, stdout, stderr) {
