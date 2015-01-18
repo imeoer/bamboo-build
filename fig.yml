@@ -8,9 +8,9 @@
 
 web:
     build: web
-    command: nginx
-    volumes_from:
-        - update
+    command: /bin/sh -c "chown www-data:www-data /data/ -R * && nginx"
+    volumes:
+        - /root:/data
     ports:
         - "80:80"
     links:
@@ -20,10 +20,9 @@ api:
     command: /data/build/api/bamboo-api
     links:
         - mongodb:mongodb
-    volumes_from:
-        - update
     volumes:
         - /data/public
+        - /root:/data
     ports:
         - "9090:9090"
 redis:
@@ -37,4 +36,4 @@ update:
     build: update
     command: node /data/update.js
     volumes:
-        - /data
+        - /root:/data
