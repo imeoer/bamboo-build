@@ -15,7 +15,7 @@ RUN apt-get install -y nodejs
 RUN npm install gulp -g
 
 # Create Build Script
-ADD build.sh /data/
-ADD update.js /data/
-RUN chmod +x /data/build.sh
-RUN /data/build.sh
+ADD build.sh /root/
+ADD update.js /root/
+RUN chmod +x /root/build.sh
+RUN /root/build.sh

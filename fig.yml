@@ -8,7 +8,7 @@
 
 web:
     build: web
-    command: /bin/sh -c "chown www-data:www-data /data/ -R * && nginx"
+    command: nginx
     volumes:
         - /root:/data
     ports:
@@ -21,7 +21,6 @@ api:
     links:
         - mongodb:mongodb
     volumes:
-        - /data/public
         - /root:/data
     ports:
         - "9090:9090"
@@ -29,11 +28,11 @@ redis:
     build: redis
 mongodb:
     build: mongodb
-    command: /bin/sh -c "rm /data/db/mongod.lock; mongod"
+    command: mongod --dbpath /data
     volumes:
-        - /data/db
+        - /root:/data
 update:
     build: update
-    command: node /data/update.js
+    command: /bin/sh -c "/root/build.sh && node /root/update.js"
     volumes:
         - /root:/data
