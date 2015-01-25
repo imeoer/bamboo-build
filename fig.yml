@@ -10,12 +10,12 @@ api:
     build: api
     links:
         - mongodb:mongodb
-    volumes:
-        - /data:/data
     ports:
         - "80:8888"
 mongodb:
-    build: mongodb
+    image: dockerfile/mongodb
     command: mongod --dbpath /data
     volumes:
-        - /data:/data
+        - /root/data/bamboo/db:/data/db
+    ports:
+        - "27017:27017"
