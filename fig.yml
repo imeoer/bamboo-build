@@ -6,33 +6,16 @@
 # sudo fig build
 # sudo fig up
 
-web:
-    build: web
-    command: nginx
-    volumes:
-        - /root:/data
-    ports:
-        - "80:80"
-    links:
-        - api:api
 api:
     build: api
-    command: /data/build/api/bamboo-api
     links:
         - mongodb:mongodb
     volumes:
-        - /root:/data
+        - /data:/data
     ports:
-        - "9090:9090"
-redis:
-    build: redis
+        - "80:8888"
 mongodb:
     build: mongodb
     command: mongod --dbpath /data
     volumes:
-        - /root:/data
-update:
-    build: update
-    command: /bin/sh -c "/root/build.sh && node /root/update.js"
-    volumes:
-        - /root:/data
+        - /data:/data
