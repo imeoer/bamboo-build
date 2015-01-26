@@ -16,6 +16,7 @@ mongodb:
     image: dockerfile/mongodb
     command: mongod --dbpath /data
     volumes:
-        - /root/data/bamboo/db:/data/db
+        - /root/data/bamboo-web/database:/data/db
+        - /root/data/bamboo-web/images:/data/golang/src/github.com/imeoer/bamboo-api/public/images
     ports:
         - "27017:27017"
