@@ -8,15 +8,16 @@
 
 api:
     build: api
+    volumes:
+        - ./images:/data/golang/src/github.com/imeoer/bamboo-api/public/images
     links:
         - mongodb:mongodb
     ports:
         - "80:8888"
 mongodb:
     image: dockerfile/mongodb
-    command: mongod --dbpath /data
+    command: mongod --dbpath /data/db
     volumes:
-        - /root/data/bamboo-web/database:/data/db
-        - /root/data/bamboo-web/images:/data/golang/src/github.com/imeoer/bamboo-api/public/images
+        - ./database:/data/db
     ports:
         - "27017:27017"

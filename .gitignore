@@ -1,0 +1,4 @@
+database/**/*
+!database/README.md
+images/**/*
+!images/README.md
