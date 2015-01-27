@@ -1,5 +1,7 @@
+# sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 36A1D7869245C8950F966E92D8576A8BA88D21E9
+# sudo echo deb https://get.docker.com/ubuntu docker main > /etc/apt/sources.list.d/docker.list
 # sudo apt-get update -y
-# sudo apt-get install git docker.io python-pip -y
+# sudo apt-get install lxc-docker python-pip -y
 # sudo pip install -U fig
 # git clone https://github.com/imeoer/bamboo-build.git
 # cd bamboo-build
@@ -9,7 +11,7 @@
 api:
     build: api
     volumes:
-        - ./images:/data/golang/src/github.com/imeoer/bamboo-api/public/images
+        - /root/data/bamboo-build/images:/data/golang/src/github.com/imeoer/bamboo-api/public/images
     links:
         - mongodb:mongodb
     ports:
@@ -18,6 +20,6 @@ mongodb:
     image: dockerfile/mongodb
     command: mongod --dbpath /data/db
     volumes:
-        - ./database:/data/db
+        - /root/data/bamboo-build/database:/data/db
     ports:
         - "27017:27017"
